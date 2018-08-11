@@ -11,7 +11,7 @@
  <?php foreach($organizations as $org) : ?>
   <div class="row">
 		<div class="col-md-3">
-    <img class="post-thumb" src="<?php echo site_url(); ?>assets/images/<?php echo $org['image']; ?>"/>
+    <img class="post-thumb" src="<?php echo site_url(); ?>assets/images/organizations/<?php echo $org['image']; ?>"/>
     <br/><br/>
   </div>
 	<div class="col-md-9">
@@ -22,8 +22,14 @@
     <?php echo word_limiter($org['description'], 60).'...'; ?>
     <a href="#" class="badge badge-light" data-toggle="modal" data-target="#modal<?php echo $org['id'] ?>">Read more</a>
     <br><br>
-     <a href="#" class="btn btn-outline-success">Bulletins</a>
-     <a href="#" class="btn btn-outline-primary">Edit</a>   
+     <a href="<?php echo base_url(); ?>organizations/view/<?php echo $org['id']; ?>" class="btn btn-outline-success">
+      <i class="fa fa-file-alt"></i>
+      Bulletins
+     </a>
+     <a href="#" class="btn btn-outline-primary">
+      <i class="fa fa-edit"></i>
+      Edit
+     </a>   
    </div>
 </div>
 <br><br>
@@ -44,7 +50,10 @@
       <?php echo $org['description']?>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          <i class="fa fa-times"></i>
+          Close
+        </button>
       </div>
     </div>
   </div>

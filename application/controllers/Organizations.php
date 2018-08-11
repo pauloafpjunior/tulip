@@ -29,6 +29,21 @@ class Organizations extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
+	public function view($org_id = NULL) 
+	{
+		if (!$org_id) {
+			redirect('organizations');
+		} else {
+			$data['title'] = 'Bulletins';
+			$data['organization'] = $this->organizations_model->getOrganization($org_id);
+			$data['bulletins'] = $this->bulletins_model->getAll();
+		
+			$this->load->view('templates/header');
+			$this->load->view('bulletins/index', $data);
+			$this->load->view('templates/footer');
+		}
+	}
+
 	public function save() 
 	{
 		$this->form_validation->set_rules('name', 'Organization name', 'required|min_length[3]');
@@ -36,7 +51,7 @@ class Organizations extends CI_Controller {
 			$this->create();
 		} else {
 			// Upload Image
-			$config['upload_path'] = './assets/images/';
+			$config['upload_path'] = './assets/images/organizations/';
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size'] = '2048';
 			$config['max_width'] = '2000';
@@ -48,7 +63,7 @@ class Organizations extends CI_Controller {
 			} else {
 				$this->organizations_model->save($this->getOrganizationFromInput());				
 			}
-			redirect('organizations/index');
+			redirect('organizations');
 			
 		}
 	}

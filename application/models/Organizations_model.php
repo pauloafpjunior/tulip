@@ -18,4 +18,9 @@
 			return $this->db->get('organizations')->result_array();
 		}
 
+		public function getOrganization($id){
+			$query = $this->db->get_where('organizations', array('id' => $id));
+			return $query->row();
+		}
+
 	}
