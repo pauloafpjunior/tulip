@@ -16,7 +16,8 @@
   </div>
   <div class="form-group">
     <label for="description">Description</label>
-    <textarea class="form-control" id="description" name="description" rows="3" placeholder="What subjects does your organization spread?"></textarea>
+    <textarea class="form-control" id="description" name="description" rows="3" 
+      placeholder="Provide a brief description on this organization, describing the subjects you intent to spread..."></textarea>
   </div>
   <div class="form-group">
     <div class="custom-file">

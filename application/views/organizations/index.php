@@ -1,7 +1,7 @@
 <div class="jumbotron">
   <div class="container">
     <h1><?= $title ?></h1>  
-    <a class="btn btn-primary" href="<?php echo base_url(); ?>/organizations/create" role="button">
+    <a class="btn btn-primary" href="<?php echo base_url(); ?>organizations/create" role="button">
       <i class="fa fa-plus"></i>
       New
     </a>
