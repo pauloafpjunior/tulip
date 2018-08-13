@@ -3,8 +3,7 @@
       <div>
         <a href="<?php echo base_url(); ?>organizations/exit" class="waves-effect waves-light btn-small grey">Exit</a>
         <strong><?= $_SESSION['org_name']; ?></strong>
-      </div>
-      
+      </div>      
       <br>
       <a class="btn-floating btn-large halfway-fab waves-effect waves-light blue" 
         href="<?php echo base_url(); ?>bulletins/create">

@@ -17,5 +17,12 @@ class Sections extends CI_Controller {
 	}
 
 	
-	
+	public function create() 
+	{
+		$data['title'] = 'New section';
+		
+		$this->load->view('templates/header');
+		$this->load->view('sections/create', $data);
+		$this->load->view('templates/footer');
+	}
 }

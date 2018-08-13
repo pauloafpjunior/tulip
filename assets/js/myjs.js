@@ -3,10 +3,17 @@ $(document).ready(function(){
     $('.modal').modal();
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.fixed-action-btn');
-    var instances = M.FloatingActionButton.init(elems, {
-      direction: 'left',
-      hoverEnabled: false
-    });
+$(document).ready(function(){
+  $('.collapsible').collapsible();
+});
+
+
+$(document).ready(function(){
+  $('input.autocomplete').autocomplete({
+    data: {
+      "Apple": null,
+      "Microsoft": null,
+      "Google": "save"
+    },
   });
+});
