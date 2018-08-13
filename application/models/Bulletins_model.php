@@ -11,6 +11,17 @@
 			))->result_array();
 		}
 
-		
+		public function save($bulletin){
+			if ($bulletin['id']) {
+				$this->db->where('id', $bulletin['id']);
+				return $this->db->update('bulletins', $bulletin);
+			} else {
+				return $this->db->insert('bulletins', $bulletin);
+			}
+		}
 
+		public function getBulletin($id){
+			$query = $this->db->get_where('bulletins', array('id' => $id));
+			return $query->row();
+		}
 	}

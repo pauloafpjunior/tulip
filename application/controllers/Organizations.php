@@ -2,19 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Organizations extends CI_Controller {
-	private function getOrganizationFromInput($image = "noimage.png") {
-		return array(
-			'id' => null,
-			'name' => $this->input->post('name'),
-			'description' => $this->input->post('description'),
-			'created_at' => (new DateTime)->format('Y-m-d H:i:s'),
-			'image' => $image
-		);
-	}
-
+	
 	public function index() 
 	{
-		$data['title'] = 'Minhas organizações';
+		$data['title'] = 'My organizations';
 		$data['organizations'] = $this->organizations_model->getAll();
 		$this->load->view('templates/header');
 		$this->load->view('organizations/index', $data);
@@ -23,13 +14,13 @@ class Organizations extends CI_Controller {
 
 	public function create() 
 	{
-		$data['title'] = 'Nova organização';
+		$data['title'] = 'New organization';
 		$this->load->view('templates/header');
 		$this->load->view('organizations/create', $data);
 		$this->load->view('templates/footer');
 	}
 
-	public function view($org_id = NULL) 
+	public function entry($org_id = NULL) 
 	{
 		if (!$org_id || !is_numeric($org_id)) {
 			show_404();
@@ -40,13 +31,17 @@ class Organizations extends CI_Controller {
 			show_404();
 		}
 
-		$this->session->set_userdata('organization', $data['organization']->id);
-		$data['title'] = 'Bulletins';
-		$data['bulletins'] = $this->bulletins_model->getAll($org_id);
+		$this->session->set_userdata('org_id', $data['organization']->id);
+		$this->session->set_userdata('org_name', $data['organization']->name);
 		
-		$this->load->view('templates/header');
-		$this->load->view('bulletins/index', $data);
-		$this->load->view('templates/footer');		
+		redirect('bulletins/index');
+	}
+
+	public function exit() 
+	{
+		$this->session->unset_userdata('org_id');
+		$this->session->unset_userdata('org_name');
+		$this->index();
 	}
 
 	public function save() 
@@ -68,8 +63,19 @@ class Organizations extends CI_Controller {
 			} else {
 				$this->organizations_model->save($this->getOrganizationFromInput());				
 			}
-			redirect('organizations');
-			
+			redirect('organizations/index');
 		}
 	}
+
+	private function getOrganizationFromInput($image = "noimage.png") {
+		return array(
+			'id' => null,
+			'name' => $this->input->post('name'),
+			'description' => $this->input->post('description'),
+			'created_at' => (new DateTime)->format('Y-m-d H:i:s'),
+			'image' => $image
+		);
+	}
+
+	
 }

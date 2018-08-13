@@ -6,26 +6,30 @@
         <i class="fa fa-save"></i> 
         Save
       </button>
+      <a class="btn btn-secondary" href="<?php echo base_url(); ?>organizations/index">
+        <i class="fa fa-times"></i>
+        Cancel
+      </a>
+      <small>* Required fields</small>
     </div>
   </div>
   <div class="container">
-  <div class="form-group" ?>
-    <label for="name">Name *</label>
-    <input type="text" class="form-control  <?php if(form_error('name')){echo 'is-invalid';} ?>" 
-      id="name" name="name" placeholder="Inform the organization name">
-    <?php echo form_error('name', '<div class="invalid-feedback">' ,'</div>'); ?>
+    <div class="form-group" ?>
+      <label for="name">Name *</label>
+      <input type="text" class="form-control  <?php if(form_error('name')){echo 'is-invalid';} ?>" 
+        id="name" name="name" placeholder="Inform the organization name">
+      <?php echo form_error('name', '<div class="invalid-feedback">' ,'</div>'); ?>
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" id="description" name="description" rows="3" 
+        placeholder="Provide a description for your organization..."></textarea>
+    </div>
+    <div class="form-group">
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="image" name="image" size="20">
+        <label class="custom-file-label" for="image">Choose an image</label>
+      </div> 
+    </div>  
   </div>
-  <div class="form-group">
-    <label for="description">Description</label>
-    <textarea class="form-control" id="description" name="description" rows="3" 
-      placeholder="Provide a description for your organization..."></textarea>
-  </div>
-  <div class="form-group">
-    <div class="custom-file">
-      <input type="file" class="custom-file-input" id="image" name="image" size="20">
-      <label class="custom-file-label" for="image">Choose an image</label>
-    </div> 
-  </div>  
-  <small>* Required fields</small>
-
 </form>
