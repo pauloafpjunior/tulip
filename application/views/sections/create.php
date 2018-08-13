@@ -14,12 +14,20 @@
     </div>
 
     <div class="row">
-      <div class="input-field col s12">
-        <i class="material-icons prefix">textsms</i>
-        <input type="text" id="icon" name="icon" class="autocomplete">
-        <label for="autocomplete-input">Autocomplete</label>
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>Open</span>
+          <input type="file" id="icon" name="icon">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text" placeholder="Choose an icon">
+        </div>
       </div>
-    </div>    
+    </div>
+
+    <div class="row">
+      <textarea name="content" rows="15" id="editor"></textarea>
+    </div>
 
     <div class="row">
       <small>* Required fields</small>
@@ -29,7 +37,7 @@
           Save
           <i class="material-icons left">save</i>          
         </button>
-        <a href="<?php echo base_url(); ?>bulletins/index" class="waves-effect waves-light btn grey">
+        <a href="<?php echo base_url(); ?>sections/index" class="waves-effect waves-light btn grey">
           Cancel
           <i class="material-icons left">close</i>          
         </a>
