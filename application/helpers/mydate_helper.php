@@ -8,13 +8,13 @@ function time_elapsed_string($datetime, $full = false) {
     $diff->d -= $diff->w * 7;
 
     $string = array(
-        'y' => 'ano',
-        'm' => 'mês',
-        'w' => 'semana',
-        'd' => 'dia',
-        'h' => 'hora',
-        'i' => 'minuto',
-        's' => 'segundo',
+        'y' => 'year',
+        'm' => 'month',
+        'w' => 'week',
+        'd' => 'day',
+        'h' => 'hour',
+        'i' => 'minute',
+        's' => 'second',
     );
     foreach ($string as $k => &$v) {
         if ($diff->$k) {
@@ -25,5 +25,5 @@ function time_elapsed_string($datetime, $full = false) {
     }
 
     if (!$full) $string = array_slice($string, 0, 1);
-    return $string ? implode(', ', $string) . ' atrás' : 'agora';
+    return $string ? implode(', ', $string) . ' ago' : 'just now';
 }

@@ -18,9 +18,10 @@
       <div class="card border-dark mb-3">
         <div class="card-header" id="heading<?php echo $sec['id']; ?>">
           <h5 class="mb-0">
-            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<?php echo $sec['id']; ?>" aria-expanded="true" aria-controls="collapse<?php echo $sec['id']; ?>">
+            <a href="#" class="btn btn-link" data-toggle="collapse" data-target="#collapse<?php echo $sec['id']; ?>" aria-expanded="true" aria-controls="collapse<?php echo $sec['id']; ?>">
               <?php echo $sec['title']; ?>
-            </button>
+              <i class="fa fa-angle-down"></i>  
+            </a>
           </h5>
         </div>
 

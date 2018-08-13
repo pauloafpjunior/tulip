@@ -1,35 +1,47 @@
-<?php echo form_open_multipart('organizations/save'); ?>
-  <div class="jumbotron">
-    <div class="container">
-      <h1><?= $title ?></h1>  
-      <button type="submit" class="btn btn-primary">
-        <i class="fa fa-save"></i> 
-        Save
-      </button>
-      <a class="btn btn-secondary" href="<?php echo base_url(); ?>organizations/index">
-        <i class="fa fa-times"></i>
-        Cancel
-      </a>
+<div class="nav-content container">
+      <h3><?=$title?></h3>
+      <br>
+    </div>
+  </nav>
+<div class="container section">
+  <?php echo form_open_multipart('organizations/save'); ?>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="name" name="name" type="text" class="validate <?php if (form_error('name')) {echo 'invalid';}?>">
+        <label for="name">Name *</label>        
+        <span class="helper-text" data-error="<?php echo form_error('name', ' ', ' '); ?>">Inform the organization name</span>        
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <textarea id="description" name="description" class="materialize-textarea"></textarea>
+        <label for="name">Description</label>
+        <span class="helper-text">Provide a description for your organization...</span>        
+      </div>    
+    </div>
+    <div class="row">
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>Open</span>
+          <input type="file" id="image" name="image">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text" placeholder="Choose an image">
+        </div>
+      </div>
+    </div>
+    <div class="row">
       <small>* Required fields</small>
+    </div>      
+    <div class="row">
+        <button class="btn waves-effect waves-light blue" type="submit">
+          Save
+          <i class="material-icons left">save</i>          
+        </button>
+        <a href="<?php echo base_url(); ?>organizations/index" class="waves-effect waves-light btn grey">
+          Cancel
+          <i class="material-icons left">close</i>          
+        </a>
     </div>
-  </div>
-  <div class="container">
-    <div class="form-group" ?>
-      <label for="name">Name *</label>
-      <input type="text" class="form-control  <?php if(form_error('name')){echo 'is-invalid';} ?>" 
-        id="name" name="name" placeholder="Inform the organization name">
-      <?php echo form_error('name', '<div class="invalid-feedback">' ,'</div>'); ?>
-    </div>
-    <div class="form-group">
-      <label for="description">Description</label>
-      <textarea class="form-control" id="description" name="description" rows="3" 
-        placeholder="Provide a description for your organization..."></textarea>
-    </div>
-    <div class="form-group">
-      <div class="custom-file">
-        <input type="file" class="custom-file-input" id="image" name="image" size="20">
-        <label class="custom-file-label" for="image">Choose an image</label>
-      </div> 
-    </div>  
-  </div>
-</form>
+  </form>
+</div>

@@ -1,61 +1,52 @@
-<div class="jumbotron">
-  <div class="container">
-    <h1><?=$title?></h1>
-    <a class="btn btn-primary" href="<?php echo base_url(); ?>organizations/create">
-      <i class="fa fa-plus"></i>
-      New
-    </a>
-  </div>
-</div>
-<div class="container">
-<?php foreach ($organizations as $org): ?>
-  <div class="row">
-		<div class="col-md-3">
-      <img class="post-thumb" src="<?php echo site_url(); ?>assets/images/organizations/<?php echo $org['image']; ?>"/>
+    <div class="nav-content container">
+      <h3><?=$title?></h3>
+      <br>
+      <a class="btn-floating btn-large halfway-fab waves-effect waves-light blue" 
+        href="<?php echo base_url(); ?>organizations/create">
+        <i class="material-icons">add</i>
+      </a>
     </div>
-	  <div class="col-md-9">
-      <h5><strong><?php echo $org['name']; ?></strong></h5>
-      <?php echo word_limiter($org['description'], 45) . '...'; ?>
-      <a href="#" class="badge badge-light" data-toggle="modal" data-target="#modalReadmore<?php echo $org['id']; ?>">Read more</a>      
-      <small class="post-date">Última atualização: <?php echo time_elapsed_string($org['last_updated']) ?></small>      
-      <a href="<?php echo base_url(); ?>organizations/entry/<?php echo $org['id']; ?>" class="btn btn-outline-success">
-        <i class="fa fa-sign-in-alt"></i>
-        Entry
-      </a>
-      <a href="#" class="btn btn-outline-primary">
-        <i class="fa fa-edit"></i>
-        Edit
-      </a>
-    </div>    
-  </div>
-  <br/><br/>
-
-  <!-- Modal -->
-  <div class="modal fade" id="modalReadmore<?php echo $org['id']; ?>" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">
-            <strong><?php echo $org['name']; ?></strong>
-          </h5>
-          <button type="button" class="close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-        <?php echo $org['description']; ?>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            <i class="fa fa-times"></i>
-            Close
-          </button>
-        </div>
+  </nav>
+  <div class="container section">
+  <?php foreach ($organizations as $org): ?>
+    <div class="row">
+      <div class="col s12 m6 l3">
+        <img class="responsive-img" src="<?php echo site_url(); ?>assets/images/organizations/<?php echo $org['image']; ?>"/>
+      </div>
+      <div class="col s12 m6 l9">            
+        <h5><strong><?php echo $org['name']; ?></strong></h5>
+        <p class="grey lighten-2">Last updated: <?php echo time_elapsed_string($org['last_updated']) ?></p>      
+        <?php echo word_limiter($org['description'], 45); ?>
+        <a class="modal-trigger" href="#modalReadmore<?php echo $org['id'];?>">Read more</a>
+        <br/><br/>
+        <a class="waves-effect waves-light btn teal" href="<?php echo base_url(); ?>organizations/entry/<?php echo $org['id']; ?>">
+          <i class="material-icons right">send</i>
+          Entry
+        </a>
+        <a class='btn blue-grey' href='#'>
+          <i class="material-icons left">edit</i>
+          Edit
+        </a>
       </div>
     </div>
-  </div>
+
+    <!-- Modal -->
+    <div id="modalReadmore<?php echo $org['id']; ?>" class="modal">
+      <div class="modal-content">
+        <h5><?php echo $org['name']; ?></h5>
+        <p><?php echo $org['description']; ?></p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close btn grey">
+          Close
+          <i class="material-icons left">close</i>          
+        </a>
+      </div>
+    </div>
+
+  <?php endforeach;?>
 
 
-<?php endforeach;?>
+
+
 </div>
-

@@ -5,6 +5,7 @@
 	display:block;
 }
 
-.post-thumb{
-	width:100%;
+.post-thumb {	
+	width:10%;
+	height: 300px;
 }
