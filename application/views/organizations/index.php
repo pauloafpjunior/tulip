@@ -23,12 +23,12 @@
     <a href="#" class="badge badge-light" data-toggle="modal" data-target="#modal<?php echo $org['id'] ?>">Ler mais</a>
     <br><br>
      <a href="<?php echo base_url(); ?>organizations/view/<?php echo $org['id']; ?>" class="btn btn-outline-success">
-      <i class="fa fa-file-alt"></i>
-      Entrar
+      <i class="fa fa-sign-in-alt"></i>
+      Entry
      </a>
      <a href="#" class="btn btn-outline-primary">
       <i class="fa fa-edit"></i>
-      Editar
+      Edit
      </a>
    </div>
 </div>

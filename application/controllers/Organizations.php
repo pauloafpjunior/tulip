@@ -31,17 +31,22 @@ class Organizations extends CI_Controller {
 
 	public function view($org_id = NULL) 
 	{
-		if ($org_id && is_numeric($org_id)) {
-			$data['title'] = 'Bulletins';
-			$data['organization'] = $this->organizations_model->getOrganization($org_id);
-			$data['bulletins'] = $this->bulletins_model->getAll($org_id);
-		
-			$this->load->view('templates/header');
-			$this->load->view('bulletins/index', $data);
-			$this->load->view('templates/footer');
-		} else {
-			redirect('organizations');
+		if (!$org_id || !is_numeric($org_id)) {
+			show_404();
 		}
+		
+		$data['organization'] = $this->organizations_model->getOrganization($org_id);
+		if (!$data['organization']) {
+			show_404();
+		}
+
+		$this->session->set_userdata('organization', $data['organization']->id);
+		$data['title'] = 'Bulletins';
+		$data['bulletins'] = $this->bulletins_model->getAll($org_id);
+		
+		$this->load->view('templates/header');
+		$this->load->view('bulletins/index', $data);
+		$this->load->view('templates/footer');		
 	}
 
 	public function save() 
