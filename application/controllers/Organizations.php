@@ -14,7 +14,7 @@ class Organizations extends CI_Controller {
 
 	public function index() 
 	{
-		$data['title'] = 'My organizations';
+		$data['title'] = 'Minhas organizações';
 		$data['organizations'] = $this->organizations_model->getAll();
 		$this->load->view('templates/header');
 		$this->load->view('organizations/index', $data);
@@ -23,7 +23,7 @@ class Organizations extends CI_Controller {
 
 	public function create() 
 	{
-		$data['title'] = 'Create an organization';
+		$data['title'] = 'Nova organização';
 		$this->load->view('templates/header');
 		$this->load->view('organizations/create', $data);
 		$this->load->view('templates/footer');
@@ -31,16 +31,16 @@ class Organizations extends CI_Controller {
 
 	public function view($org_id = NULL) 
 	{
-		if (!$org_id) {
-			redirect('organizations');
-		} else {
+		if ($org_id && is_numeric($org_id)) {
 			$data['title'] = 'Bulletins';
 			$data['organization'] = $this->organizations_model->getOrganization($org_id);
-			$data['bulletins'] = $this->bulletins_model->getAll();
+			$data['bulletins'] = $this->bulletins_model->getAll($org_id);
 		
 			$this->load->view('templates/header');
 			$this->load->view('bulletins/index', $data);
 			$this->load->view('templates/footer');
+		} else {
+			redirect('organizations');
 		}
 	}
 
