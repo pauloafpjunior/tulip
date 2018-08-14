@@ -72,7 +72,7 @@ class Organizations extends CI_Controller {
 		$organization->id = null;
 		$organization->name = $this->input->post('name');
 		$organization->description = $this->input->post('description');
-		$organization->created_at = (new DateTime)->format('Y-m-d H:i:s');
+		$organization->last_updated = (new DateTime)->format('Y-m-d H:i:s');
 		$organization->image = $image;
 		return $organization;
 	}

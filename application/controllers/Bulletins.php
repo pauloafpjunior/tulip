@@ -107,7 +107,5 @@ class Bulletins extends CI_Controller {
 		$bulletin->organization_id = $this->session->userdata('org_id');
 		$bulletin->image = $image;
 		return $bulletin;
-	}
-
-	
+	}	
 }

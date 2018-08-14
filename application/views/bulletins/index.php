@@ -14,7 +14,7 @@
 <div class="container section">
 <?php foreach ($bulletins as $bul): ?>
     <div class="row">
-      <div class="col s12 m6 l3">
+      <div class="col s12 m6 l3" style="text-align: center">
         <img class="responsive-img image-thumb" src="<?php echo base_url(); ?>assets/images/bulletins/<?php echo $bul['image']; ?>"/>
       </div>
       <div class="col s12 m6 l9">            
