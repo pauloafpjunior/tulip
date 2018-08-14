@@ -19,7 +19,16 @@ $(document).ready(function(){
 });
 
 ClassicEditor
-  .create( document.querySelector( '#editor' ) )
-  .catch( error => {
-    console.error( error );
-} );
+  .create( document.querySelector( '#content' ), {
+      toolbar: [ 'heading', '|', 'alignment', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ]      
+    })    
+    .catch( error => {
+      console.error( error );
+    }); 
+
+CKEDITOR.editorConfig = function( config ) {
+      config.language = 'es';
+      config.uiColor = '#F7B42C';
+      config.height = 300;
+      config.toolbarCanCollapse = true;
+    };

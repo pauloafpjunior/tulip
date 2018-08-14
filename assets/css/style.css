@@ -9,3 +9,7 @@
 	width:10%;
 	height: 300px;
 }
+
+.ck-editor__editable {
+    min-height: 20em;
+}
