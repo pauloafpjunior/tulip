@@ -5,9 +5,8 @@
 	display:block;
 }
 
-.post-thumb {	
-	width:10%;
-	height: 300px;
+.image-thumb {	
+	max-height: 12em;
 }
 
 .ck-editor__editable {
