@@ -2,7 +2,7 @@
       <h3><?=$title?></h3>
       <br>
       <a class="btn-floating btn-large halfway-fab waves-effect waves-light blue" 
-        href="<?php echo base_url(); ?>organizations/create">
+        href="<?php echo site_url(); ?>organizations/create">
         <i class="material-icons">add</i>
       </a>
     </div>
@@ -11,7 +11,7 @@
   <?php foreach ($organizations as $org): ?>
     <div class="row">
       <div class="col s12 m6 l3">
-        <img class="responsive-img" src="<?php echo site_url(); ?>assets/images/organizations/<?php echo $org['image']; ?>"/>
+        <img class="responsive-img" src="<?php echo base_url(); ?>assets/images/organizations/<?php echo $org['image']; ?>"/>
       </div>
       <div class="col s12 m6 l9">            
         <h5><strong><?php echo $org['name']; ?></strong></h5>
