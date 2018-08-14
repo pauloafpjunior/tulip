@@ -1,8 +1,8 @@
   <div class="nav-content container">
       <h3><?=$title?></h3>
       <div>
-        <strong><?= $_SESSION['org_name']; ?>&nbsp;&nbsp;</strong>
         <a href="<?php echo site_url(); ?>organizations/exit_org" class="waves-effect waves-light btn-small grey">Exit</a>
+        <strong>&nbsp;&nbsp;<?= $_SESSION['org_name']; ?></strong>
       </div>      
       <br>
       <a class="btn-floating btn-large halfway-fab waves-effect waves-light blue" 

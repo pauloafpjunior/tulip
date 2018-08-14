@@ -4,14 +4,14 @@
       <a class="btn-floating btn-large halfway-fab waves-effect waves-light blue" 
         href="<?php echo site_url(); ?>organizations/create">
         <i class="material-icons">add</i>
-      </a>
+      </a>      
     </div>
   </nav>
   <div class="container section">
   <?php foreach ($organizations as $org): ?>
     <div class="row">
-      <div class="col s12 m6 l3">
-        <img class="responsive-img" src="<?php echo base_url(); ?>assets/images/organizations/<?php echo $org['image']; ?>"/>
+      <div class="col s12 m6 l3" style="text-align: center">
+        <img class="responsive-img" style="max-height: 12em" src="<?php echo base_url(); ?>assets/images/organizations/<?php echo $org['image']; ?>"/>
       </div>
       <div class="col s12 m6 l9">            
         <h5><strong><?php echo $org['name']; ?></strong></h5>

@@ -7,15 +7,8 @@ $(document).ready(function(){
   $('.collapsible').collapsible();
 });
 
-
 $(document).ready(function(){
-  $('input.autocomplete').autocomplete({
-    data: {
-      "Apple": null,
-      "Microsoft": null,
-      "Google": "save"
-    },
-  });
+  $('.fixed-action-btn').floatingActionButton();
 });
 
 ClassicEditor
@@ -25,10 +18,3 @@ ClassicEditor
     .catch( error => {
       console.error( error );
     }); 
-
-CKEDITOR.editorConfig = function( config ) {
-      config.language = 'es';
-      config.uiColor = '#F7B42C';
-      config.height = 300;
-      config.toolbarCanCollapse = true;
-    };
