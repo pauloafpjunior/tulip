@@ -38,7 +38,7 @@
           Save
           <i class="material-icons left">save</i>          
         </button>
-        <a href="<?php echo base_url(); ?>sections/index" class="waves-effect waves-light btn grey">
+        <a href="<?php echo site_url(); ?>sections/index" class="waves-effect waves-light btn grey">
           Cancel
           <i class="material-icons left">close</i>          
         </a>

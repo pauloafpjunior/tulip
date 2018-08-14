@@ -19,7 +19,7 @@
         <?php echo word_limiter($org['description'], 45).'...'; ?>
         <a class="modal-trigger" href="#modalReadmore<?php echo $org['id'];?>">Read more</a>
         <br/><br/>
-        <a class="waves-effect waves-light btn teal" href="<?php echo base_url(); ?>organizations/entry/<?php echo $org['id']; ?>">
+        <a class="waves-effect waves-light btn teal" href="<?php echo site_url(); ?>organizations/entry/<?php echo $org['id']; ?>">
           <i class="material-icons right">send</i>
           Entry
         </a>
@@ -45,8 +45,4 @@
     </div>
 
   <?php endforeach;?>
-
-
-
-
 </div>
