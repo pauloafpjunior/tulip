@@ -23,16 +23,6 @@
         </div>
       </div>
     </div>
-    <div class="row">      
-      <div class="switch">
-        <label>
-          Unpublished
-          <input type="checkbox" id="published" name="published">
-          <span class="lever"></span>
-          Published
-        </label>
-      </div>
-    </div>
     <div class="row">
       <small>* Required fields</small>
     </div>      

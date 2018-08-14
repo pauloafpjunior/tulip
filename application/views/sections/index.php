@@ -1,8 +1,8 @@
 <div class="nav-content container">
       <h3><?=$title?></h3>
       <div>
+        <strong><?= $_SESSION['bul_title']; ?>&nbsp;&nbsp;</strong>
         <a href="<?php echo base_url(); ?>bulletins/exit" class="waves-effect waves-light btn-small grey">Exit</a>
-        <strong><?= $_SESSION['bul_title']; ?></strong>
       </div>      
       <br>
       <a class="btn-floating btn-large halfway-fab waves-effect waves-light blue" 
@@ -15,7 +15,10 @@
   <ul class="collapsible">
     <?php foreach($sections as $sec) : ?>
     <li>
-      <div class="collapsible-header"><i class="material-icons">filter_drama</i><?php echo $sec['title']; ?></div>
+      <div class="collapsible-header">
+        <img class="responsive-img" style="height: 24px;" src="<?php echo site_url(); ?>assets/images/sections/<?php echo $sec['icon']; ?>"/>
+        &nbsp;&nbsp;<?php echo $sec['title']; ?>
+      </div>
       <div class="collapsible-body"><?php echo $sec['content']; ?></div>
     </li>
     <?php endforeach; ?>

@@ -49,6 +49,25 @@ class Bulletins extends CI_Controller {
 		$this->index();
 	}
 
+	public function publish($bul_id = null) 
+	{
+		if (!$bul_id || !is_numeric($bul_id)) {
+			show_404();
+		}
+		
+		$data['bulletin'] = $this->bulletins_model->getBulletin($bul_id);
+		if (!$data['bulletin']) {
+			show_404();
+		}
+
+		$data['bulletin']->published = !($data['bulletin']->published);
+		$array = json_decode(json_encode($data['bulletin']), true);
+		
+		$this->bulletins_model->save($array);				
+		
+		redirect('bulletins/index');
+	}
+
 	public function save() 
 	{
 		$this->form_validation->set_rules('title', 'Bulletin title', 'required|min_length[3]');
@@ -77,7 +96,6 @@ class Bulletins extends CI_Controller {
 			'id' => null,
 			'title' => $this->input->post('title'),
 			'created_at' => (new DateTime)->format('Y-m-d H:i:s'),
-			'published' => ($this->input->post('published') ? true : false) ,
 			'organization_id' => $this->session->userdata('org_id'),
 			'image' => $image
 		);

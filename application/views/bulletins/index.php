@@ -1,8 +1,8 @@
   <div class="nav-content container">
       <h3><?=$title?></h3>
       <div>
+        <strong><?= $_SESSION['org_name']; ?>&nbsp;&nbsp;</strong>
         <a href="<?php echo base_url(); ?>organizations/exit" class="waves-effect waves-light btn-small grey">Exit</a>
-        <strong><?= $_SESSION['org_name']; ?></strong>
       </div>      
       <br>
       <a class="btn-floating btn-large halfway-fab waves-effect waves-light blue" 
@@ -20,6 +20,15 @@
       <div class="col s12 m6 l9">            
         <h5>
           <strong><?php echo $bul['title']; ?></strong>
+          <div class="switch">
+            <label>
+              Unpublished
+              <input onchange="window.location.href='<?php echo base_url(); ?>bulletins/publish/<?php echo $bul['id'] ?>'"  type="checkbox" <?php if($bul['published']) { echo 'checked'; } ?> id="published" name="published">
+              <span class="lever"></span>
+              Published
+            </label>
+          </div>
+        
         </h5>
         <p class="grey lighten-2">Created at: <?php echo time_elapsed_string($bul['created_at']) ?></p>      
         <a class="waves-effect waves-light btn teal" href="<?php echo base_url(); ?>bulletins/entry/<?php echo $bul['id']; ?>">
@@ -30,11 +39,8 @@
           <i class="material-icons left">edit</i>
           Edit
         </a>
-        <?php if($bul['published']) : ?>
-            <span class="new badge green" data-badge-caption="Published"></span>
-          <?php else:?> 
-            <span class="new badge red" data-badge-caption="Unpublished"></span>
-          <?php endif;?> 
+        
+        
       </div>
     </div>  
     <?php endforeach; ?>

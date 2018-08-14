@@ -26,6 +26,7 @@
     </div>
 
     <div class="row">
+      <label for="editor">Content</label>        
       <textarea name="content" rows="15" id="editor"></textarea>
     </div>
 
