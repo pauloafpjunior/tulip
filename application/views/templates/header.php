@@ -15,7 +15,7 @@
   <nav class="nav-extended black">
     <div class="nav-wrapper container">
       <a class="brand-logo" href="<?php echo site_url(); ?>organizations/index">
-        <img src="<?php echo base_url(); ?>/assets/images/other/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <img src="<?php echo base_url(); ?>assets/images/other/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         Tulip
       </a>
 
