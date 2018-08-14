@@ -20,7 +20,7 @@
           <input type="file" id="icon" name="icon">
         </div>
         <div class="file-path-wrapper">
-          <input class="file-path validate" type="text" placeholder="Choose an icon">
+          <input class="file-path validate" type="text" placeholder="Choose a 24px icon">
         </div>
       </div>
     </div>

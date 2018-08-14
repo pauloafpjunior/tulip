@@ -5,8 +5,8 @@
 		}
 
 		public function save($org){
-			if ($org['id']) {
-				$this->db->where('id', $org['id']);
+			if ($org->id) {
+				$this->db->where('id', $org->id);
 				return $this->db->update('organizations', $org);
 			} else {
 				return $this->db->insert('organizations', $org);

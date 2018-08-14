@@ -16,7 +16,7 @@
       <div class="col s12 m6 l9">            
         <h5><strong><?php echo $org['name']; ?></strong></h5>
         <p class="grey lighten-2">Last updated: <?php echo time_elapsed_string($org['last_updated']) ?></p>      
-        <?php echo word_limiter($org['description'], 45); ?>
+        <?php echo word_limiter($org['description'], 45).'...'; ?>
         <a class="modal-trigger" href="#modalReadmore<?php echo $org['id'];?>">Read more</a>
         <br/><br/>
         <a class="waves-effect waves-light btn teal" href="<?php echo base_url(); ?>organizations/entry/<?php echo $org['id']; ?>">

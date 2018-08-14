@@ -12,8 +12,8 @@
 		}
 
 		public function save($bulletin){
-			if ($bulletin['id']) {
-				$this->db->where('id', $bulletin['id']);
+			if ($bulletin->id) {
+				$this->db->where('id', $bulletin->id);
 				return $this->db->update('bulletins', $bulletin);
 			} else {
 				return $this->db->insert('bulletins', $bulletin);

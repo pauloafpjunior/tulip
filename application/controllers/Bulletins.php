@@ -61,9 +61,7 @@ class Bulletins extends CI_Controller {
 		}
 
 		$data['bulletin']->published = !($data['bulletin']->published);
-		$array = json_decode(json_encode($data['bulletin']), true);
-		
-		$this->bulletins_model->save($array);				
+		$this->bulletins_model->save($data['bulletin']);				
 		
 		redirect('bulletins/index');
 	}
@@ -87,18 +85,28 @@ class Bulletins extends CI_Controller {
 			} else {
 				$this->bulletins_model->save($this->getBulletinFromInput());				
 			}
+
+			// Update last_update field of organization
+			$organization = $this->organizations_model->getOrganization(
+				$this->session->userdata('org_id'));
+			if (!$organization) {
+				show_404();
+			}
+			
+			$organization->last_updated = (new DateTime)->format('Y-m-d H:i:s');
+			$this->organizations_model->save($organization);					
 			redirect('bulletins/index');			
 		}
 	}
 
 	private function getBulletinFromInput($image = "noimage.png") {
-		return array(
-			'id' => null,
-			'title' => $this->input->post('title'),
-			'created_at' => (new DateTime)->format('Y-m-d H:i:s'),
-			'organization_id' => $this->session->userdata('org_id'),
-			'image' => $image
-		);
+		$bulletin = new stdClass();
+		$bulletin->id = null;
+		$bulletin->title = $this->input->post('title');
+		$bulletin->created_at = (new DateTime)->format('Y-m-d H:i:s');
+		$bulletin->organization_id = $this->session->userdata('org_id');
+		$bulletin->image = $image;
+		return $bulletin;
 	}
 
 	
