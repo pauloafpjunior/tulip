@@ -37,7 +37,7 @@ class Organizations extends CI_Controller {
 		redirect('bulletins/index');
 	}
 
-	public function exit() 
+	public function exit_org()
 	{
 		$this->session->unset_userdata('org_id');
 		$this->session->unset_userdata('org_name');

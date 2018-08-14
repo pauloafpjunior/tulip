@@ -2,7 +2,7 @@
       <h3><?=$title?></h3>
       <div>
         <strong><?= $_SESSION['org_name']; ?>&nbsp;&nbsp;</strong>
-        <a href="<?php echo base_url(); ?>organizations/exit" class="waves-effect waves-light btn-small grey">Exit</a>
+        <a href="<?php echo base_url(); ?>organizations/exit_org" class="waves-effect waves-light btn-small grey">Exit</a>
       </div>      
       <br>
       <a class="btn-floating btn-large halfway-fab waves-effect waves-light blue" 

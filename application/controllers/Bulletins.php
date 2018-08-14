@@ -42,7 +42,7 @@ class Bulletins extends CI_Controller {
 		redirect('sections/index');
 	}
 
-	public function exit() 
+	public function exit_bul() 
 	{
 		$this->session->unset_userdata('bul_id');
 		$this->session->unset_userdata('bul_title');
