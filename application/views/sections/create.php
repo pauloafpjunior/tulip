@@ -26,7 +26,7 @@
     </div>
 
     <div class="row">
-      <label for="editor">Content</label>        
+      <label for="content">Your section content</label>        
       <textarea name="content" rows="15" id="content"></textarea>
     </div>
 

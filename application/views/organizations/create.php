@@ -26,7 +26,7 @@
           <input type="file" id="image" name="image">
         </div>
         <div class="file-path-wrapper">
-          <input class="file-path validate" type="text" placeholder="Choose an image">
+          <input class="file-path validate" type="text" placeholder="Choose a logo image">
         </div>
       </div>
     </div>
