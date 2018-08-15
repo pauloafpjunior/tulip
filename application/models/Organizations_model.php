@@ -13,8 +13,13 @@
 			}
 		}
 
-		public function getAll(){
+		public function getAll($query = null){
 			$this->db->order_by('last_updated', 'DESC');
+			
+			if ($query) {
+				$this->db->like('name', $query);
+			}
+
 			return $this->db->get('organizations')->result_array();
 		}
 
