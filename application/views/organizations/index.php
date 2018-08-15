@@ -21,7 +21,7 @@
         <br/><br/>
         <a class="waves-effect waves-light btn teal" href="<?php echo site_url(); ?>organizations/entry/<?php echo $org['id']; ?>">
           <i class="material-icons right">send</i>
-          Entry
+          Entry  
         </a>
         <a class='btn blue-grey' href='#'>
           <i class="material-icons left">edit</i>
