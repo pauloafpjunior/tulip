@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Tulip - Spread the Good News</title>
-
+    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/favicon.ico" />
     <!--Import Google Icon Font-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" >
     <!--Import materialize.css-->
