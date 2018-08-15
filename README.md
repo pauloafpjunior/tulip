@@ -8,7 +8,7 @@ allowing users to publish bulletins about their topics of interest.
 1. **Clone** this repository.
 2. **Create** a database using 'tulipdb.sql' 
 file available at the root of this project.
-3. *Set up* the following environment variables in your web server.
+3. **Setup** the following environment variables in your web server.
 
 ~~~~~~~~
 MYSQL_DATABASE="tulipdb"
