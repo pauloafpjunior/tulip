@@ -21,7 +21,11 @@
 
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Home</a></li>
+        <li><a href="<?php echo site_url(); ?>organizations/index">Home</a></li>
+        <li><a href="badges.html">About</a></li>
+      </ul>
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="<?php echo site_url(); ?>organizations/index">Home</a></li>
         <li><a href="badges.html">About</a></li>
       </ul>
     </div>

@@ -1,5 +1,5 @@
 <div class="nav-content container">
-      <h3><?=$title?></h3>
+      <h4><?=$title?></h4>
       <br>
     </div>
   </nav>

@@ -1,5 +1,5 @@
     <div class="nav-content container">
-      <h3><?=$title?></h3>
+      <h4><?=$title?></h4>
       <br>
       <a class="btn-floating btn-large halfway-fab waves-effect waves-light blue" 
         href="<?php echo site_url(); ?>organizations/create">

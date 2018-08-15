@@ -1,5 +1,5 @@
   <div class="nav-content container">
-      <h3><?=$title?></h3>
+      <h4><?=$title?></h4>
       <div>
         <a href="<?php echo site_url(); ?>organizations/exit_org" class="waves-effect waves-light btn-small grey">Exit</a>
         <strong>&nbsp;&nbsp;<?= $_SESSION['org_name']; ?></strong>
