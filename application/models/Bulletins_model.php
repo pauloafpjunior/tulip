@@ -4,12 +4,19 @@
 			$this->load->database();			
 		}
 
-		public function getAll($org_id){
+		public function getAll($org_id, $just_published = false){
 			$this->db->order_by('created_at', 'DESC');
-			return $this->db->get_where('bulletins', array(
-				'organization_id' => $org_id,
-				'published' => '1'
-			))->result_array();
+			if ($just_published) {
+				$query = $this->db->get_where('bulletins', array(
+					'organization_id' => $org_id,
+					'published' => '1'
+				));
+			} else {
+				$query = $this->db->get_where('bulletins', array(
+					'organization_id' => $org_id
+				));
+			}
+			return $query->result_array();
 		}
 
 		public function save($bulletin){
@@ -21,11 +28,17 @@
 			}
 		}
 
-		public function getBulletin($id) {
-			$query = $this->db->get_where('bulletins', array(
-				'id' => $id,
-				'published' => '1'
-			));
+		public function getBulletin($id, $just_published = false) {
+			if ($just_published) {
+				$query = $this->db->get_where('bulletins', array(
+					'id' => $id,
+					'published' => '1'
+				));
+			} else {
+				$query = $this->db->get_where('bulletins', array(
+					'id' => $id
+				));
+			}
 			return $query->row();
 		}
 	}
