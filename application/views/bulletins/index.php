@@ -20,16 +20,16 @@
       <div class="col s12 m6 l9">            
         <h5>
           <strong><?php echo $bul['title']; ?></strong>
-          <div class="switch">
-            <label>
-              Unpublished
-              <input onchange="window.location.href='<?php echo site_url(); ?>bulletins/publish/<?php echo $bul['id'] ?>'"  type="checkbox" <?php if($bul['published']) { echo 'checked'; } ?> id="published" name="published">
-              <span class="lever"></span>
-              Published
-            </label>
-          </div>
-        
         </h5>
+        <p><i><?php echo $bul['subtitle']; ?></i></p>
+        <div class="switch">
+          <label>
+            Unpublished
+            <input onchange="window.location.href='<?php echo site_url(); ?>bulletins/publish/<?php echo $bul['id'] ?>'"  type="checkbox" <?php if($bul['published']) { echo 'checked'; } ?> id="published" name="published">
+            <span class="lever"></span>
+            Published
+          </label>
+        </div>
         <p class="grey lighten-2">Created at: <?php echo time_elapsed_string($bul['created_at']) ?></p>      
         <a class="waves-effect waves-light btn teal" href="<?php echo site_url(); ?>bulletins/entry/<?php echo $bul['id']; ?>">
           <i class="material-icons right">send</i>

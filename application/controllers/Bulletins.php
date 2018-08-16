@@ -108,6 +108,7 @@ class Bulletins extends CI_Controller {
 		$bulletin = new stdClass();
 		$bulletin->id = null;
 		$bulletin->title = $this->input->post('title');
+		$bulletin->subtitle = $this->input->post('subtitle');
 		$bulletin->created_at = (new DateTime)->format('Y-m-d H:i:s');
 		$bulletin->organization_id = $this->session->userdata('org_id');
 		$bulletin->image = $image_path;
