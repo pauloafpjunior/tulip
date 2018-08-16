@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Sections extends CI_Controller {
 
-	private $BASE_PATH_IMAGES = '/assets/images/sections/';
+	private $BASE_PATH_IMAGES = 'assets/images/sections/';
 
 	public function index() 
 	{
@@ -36,7 +36,7 @@ class Sections extends CI_Controller {
 			$this->create();
 		} else {
 			// Upload Image
-			$config['upload_path'] = '.' . $this->BASE_PATH_IMAGES;
+			$config['upload_path'] = './' . $this->BASE_PATH_IMAGES;
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size'] = '1024';
 			$config['max_width'] = '2000';
