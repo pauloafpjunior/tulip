@@ -17,7 +17,6 @@ MYSQL_USERNAME="your-username"
 MYSQL_PASSWORD="your-password"
 ~~~~~~~~
 
-
 # License
 
 *Todo*

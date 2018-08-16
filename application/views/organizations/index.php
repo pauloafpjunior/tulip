@@ -11,7 +11,7 @@
   <?php foreach ($organizations as $org): ?>
     <div class="row">
       <div class="col s12 m6 l3" style="text-align: center">
-        <img class="responsive-img image-thumb" src="<?php echo base_url(); ?>assets/images/organizations/<?php echo $org['image']; ?>"/>
+        <img class="responsive-img image-thumb" src="<?php echo $org['image']; ?>"/>
       </div>
       <div class="col s12 m6 l9">            
         <h5><strong><?php echo $org['name']; ?></strong></h5>

@@ -2,6 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Organizations extends CI_Controller {
+
+	private $BASE_PATH_IMAGES = '/assets/images/organizations/';
 	
 	public function index() 
 	{
@@ -51,29 +53,31 @@ class Organizations extends CI_Controller {
 			$this->create();
 		} else {
 			// Upload Image
-			$config['upload_path'] = './assets/images/organizations/';
+			$config['upload_path'] = '.' . $this->BASE_PATH_IMAGES;
 			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size'] = '512';
-			$config['max_width'] = '500';
-			$config['max_height'] = '500';
+			$config['max_size'] = '1024';
+			$config['max_width'] = '2000';
+			$config['max_height'] = '2000';
 			$this->load->library('upload', $config);
 			if($this->upload->do_upload('image')){				
 				$data = array('upload_data' => $this->upload->data());
-				$this->organizations_model->save($this->getOrganizationFromInput($data['upload_data']['file_name']));				
+				$image_path = base_url() . $this->BASE_PATH_IMAGES . $data['upload_data']['file_name'];
+				$this->organizations_model->save($this->getOrganizationFromInput($image_path));
 			} else {
-				$this->organizations_model->save($this->getOrganizationFromInput());				
+				$image_path = base_url() . $this->BASE_PATH_IMAGES . 'noimage.png';
+				$this->organizations_model->save($this->getOrganizationFromInput($image_path));				
 			}
 			redirect('organizations/index');
 		}
 	}
 
-	private function getOrganizationFromInput($image = "noimage.png") {
+	private function getOrganizationFromInput($image_path) {
 		$organization = new stdClass();
 		$organization->id = null;
 		$organization->name = $this->input->post('name');
 		$organization->description = $this->input->post('description');
 		$organization->last_updated = (new DateTime)->format('Y-m-d H:i:s');
-		$organization->image = $image;
+		$organization->image = $image_path;
 		return $organization;
 	}
 
