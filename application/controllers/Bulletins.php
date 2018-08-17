@@ -2,6 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Bulletins extends CI_Controller {
+	
+	private $BASE_PATH_IMAGES = 'assets/images/bulletins/';
+	
 	public function index() 
 	{
 		// Check organization login
@@ -73,17 +76,19 @@ class Bulletins extends CI_Controller {
 			$this->create();
 		} else {
 			// Upload Image
-			$config['upload_path'] = './assets/images/bulletins/';
+			$config['upload_path'] = './' . $this->BASE_PATH_IMAGES;
 			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size'] = '512';
-			$config['max_width'] = '500';
-			$config['max_height'] = '500';
+			$config['max_size'] = '1024';
+			$config['max_width'] = '2000';
+			$config['max_height'] = '2000';
 			$this->load->library('upload', $config);
 			if($this->upload->do_upload('image')){				
 				$data = array('upload_data' => $this->upload->data());
-				$this->bulletins_model->save($this->getBulletinFromInput($data['upload_data']['file_name']));				
+				$image_path = base_url() . $this->BASE_PATH_IMAGES . $data['upload_data']['file_name'];
+				$this->bulletins_model->save($this->getBulletinFromInput($image_path));				
 			} else {
-				$this->bulletins_model->save($this->getBulletinFromInput());				
+				$image_path = base_url() . $this->BASE_PATH_IMAGES . 'noimage.png';
+				$this->bulletins_model->save($this->getBulletinFromInput($image_path));				
 			}
 
 			// Update last_update field of organization
@@ -99,13 +104,14 @@ class Bulletins extends CI_Controller {
 		}
 	}
 
-	private function getBulletinFromInput($image = "noimage.png") {
+	private function getBulletinFromInput($image_path) {
 		$bulletin = new stdClass();
 		$bulletin->id = null;
 		$bulletin->title = $this->input->post('title');
+		$bulletin->subtitle = $this->input->post('subtitle');
 		$bulletin->created_at = (new DateTime)->format('Y-m-d H:i:s');
 		$bulletin->organization_id = $this->session->userdata('org_id');
-		$bulletin->image = $image;
+		$bulletin->image = $image_path;
 		return $bulletin;
 	}	
 }

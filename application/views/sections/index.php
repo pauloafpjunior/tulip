@@ -16,7 +16,7 @@
     <?php foreach($sections as $sec) : ?>
     <li>
       <div class="collapsible-header">
-        <img class="responsive-img" style="height: 24px;" src="<?php echo base_url(); ?>assets/images/sections/<?php echo $sec['icon']; ?>"/>
+        <img class="responsive-img" style="height: 24px;" src="<?php echo $sec['icon']; ?>"/>
         &nbsp;&nbsp;<?php echo $sec['title']; ?>
       </div>
       <div class="collapsible-body"><?php echo $sec['content']; ?></div>

@@ -2,6 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Sections extends CI_Controller {
+
+	private $BASE_PATH_IMAGES = 'assets/images/sections/';
+
 	public function index() 
 	{
 		// Check bulletin login
@@ -33,29 +36,31 @@ class Sections extends CI_Controller {
 			$this->create();
 		} else {
 			// Upload Image
-			$config['upload_path'] = './assets/images/sections/';
+			$config['upload_path'] = './' . $this->BASE_PATH_IMAGES;
 			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size'] = '2048';
+			$config['max_size'] = '1024';
 			$config['max_width'] = '2000';
 			$config['max_height'] = '2000';
 			$this->load->library('upload', $config);
 			if($this->upload->do_upload('icon')){				
 				$data = array('upload_data' => $this->upload->data());
-				$this->sections_model->save($this->getSectionFromInput($data['upload_data']['file_name']));				
+				$image_path = base_url() . $this->BASE_PATH_IMAGES . $data['upload_data']['file_name'];
+				$this->sections_model->save($this->getSectionFromInput($image_path));				
 			} else {
-				$this->sections_model->save($this->getSectionFromInput());				
+				$image_path = base_url() . $this->BASE_PATH_IMAGES . 'noimage.png';
+				$this->sections_model->save($this->getSectionFromInput($image_path));				
 			}
 			redirect('sections/index');			
 		}
 	}
 
-	private function getSectionFromInput($icon = "noimage.png") {
+	private function getSectionFromInput($image_path) {
 		$section = new stdClass();
 		$section->id = null;
 		$section->title = $this->input->post('title');
 		$section->content = $this->input->post('content');
 		$section->bulletin_id = $this->session->userdata('bul_id');
-		$section->icon = $icon;
+		$section->icon = $image_path;
 		return $section;		
 	}
 }

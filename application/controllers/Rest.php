@@ -8,6 +8,14 @@ require APPPATH . 'libraries/REST_Controller.php';
 require APPPATH . 'libraries/Format.php';
 
 class Rest extends REST_Controller {
+
+    public function __construct()
+    {
+        header('Access-Control-Allow-Origin: *');
+        header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+        parent::__construct();
+    }
+
     public function organizations_get() {
         $query = $this->input->get('q');
         if (!$query) {
