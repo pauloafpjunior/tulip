@@ -23,7 +23,7 @@
         </h5>
         <p><i><?php echo $bul['subtitle']; ?></i></p>
         <div class="switch">
-            <label class="tooltipped"   data-position="right" data-tooltip="The bulletin must be pusblished before notifying the users.">
+            <label class="tooltipped" data-position="right" data-tooltip="The bulletin must be pusblished before notifying the users.">
               Unpublished
               <input onchange="window.location.href='<?php echo site_url(); ?>bulletins/publish/<?php echo $bul['id'] ?>'"  
                 type="checkbox" <?php if($bul['published']) { echo 'checked'; } ?> id="published" 
