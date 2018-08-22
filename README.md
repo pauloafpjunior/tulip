@@ -15,6 +15,7 @@ MYSQL_DATABASE="tulipdb"
 MYSQL_HOSTNAME="your-domain"
 MYSQL_USERNAME="your-username"
 MYSQL_PASSWORD="your-password"
+FCM_API_KEY="your-fcm-api-key"
 ~~~~~~~~
 
 # License

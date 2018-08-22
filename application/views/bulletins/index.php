@@ -41,9 +41,9 @@
           <i class="material-icons left">edit</i>
           Edit
         </a>
-        <a class='btn green' <?php if(!$bul['published']) { echo 'disabled'; } ?>>
+        <a class='btn green' <?php if(!$bul['published']) { echo 'disabled'; } ?> href="<?php echo site_url(); ?>bulletins/notify_users/<?php echo $bul['id']; ?>">
           <i class="material-icons left">notifications</i>
-          Notify the users
+          Notify users
         </a>
         
         
