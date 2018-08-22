@@ -27,7 +27,7 @@ function users_notification($org_name, $bul_id)
 
         $headers = array
             (
-            'Authorization: key=' . API_ACCESS_KEY,
+            'Authorization: key=' . $API_ACCESS_KEY,
             'Content-Type: application/json',
         );
 
