@@ -15,7 +15,8 @@ function users_notification($org_name, $org_id, $bul_id)
         );
 
         $data = array(
-            'bul_id' => $bul_id,
+            'org_id' => $org_id,
+            'bul_id' => $bul_id
         );
 
         $fields = array
