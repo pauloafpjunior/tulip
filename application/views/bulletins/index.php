@@ -1,12 +1,12 @@
   <div class="nav-content container">
       <h4><?=$title?></h4>
       <div>
-        <a href="<?php echo site_url(); ?>organizations/exit_org" class="waves-effect waves-light btn-small grey">Voltar</a>
+        <a href="<?php echo site_url(); ?>private/organizations/exit_org" class="waves-effect waves-light btn-small grey">Voltar</a>
         <strong>&nbsp;&nbsp;<?= $_SESSION['org_name']; ?></strong>
       </div>      
       <br>
       <a class="btn-floating btn-large halfway-fab waves-effect waves-light blue" 
-        href="<?php echo site_url(); ?>bulletins/create">
+        href="<?php echo site_url(); ?>private/bulletins/create">
         <i class="material-icons">add</i>
       </a>
   </div>
@@ -25,7 +25,7 @@
         <div class="switch">
             <label class="tooltipped" data-position="right" data-tooltip="The bulletin must be pusblished before notifying the users.">
               Não publicado
-              <input onchange="window.location.href='<?php echo site_url(); ?>bulletins/publish/<?php echo $bul['id'] ?>'"  
+              <input onchange="window.location.href='<?php echo site_url(); ?>private/bulletins/publish/<?php echo $bul['id'] ?>'"  
                 type="checkbox" <?php if($bul['published']) { echo 'checked'; } ?> id="published" 
                 name="published">
               <span class="lever"></span>
@@ -33,15 +33,15 @@
             </label>
         </div>
         <p class="grey lighten-2">Última atualização: <?php echo time_elapsed_string($bul['created_at']) ?></p>      
-        <a class="btn waves-effect waves-light btn teal" href="<?php echo site_url(); ?>bulletins/entry/<?php echo $bul['id']; ?>">
+        <a class="btn waves-effect waves-light btn teal" href="<?php echo site_url(); ?>private/bulletins/entry/<?php echo $bul['id']; ?>">
           <i class="material-icons right">send</i>
           Entrar
         </a>
-        <a class='btn waves-effect waves-light btn blue-grey' href="<?php echo site_url(); ?>bulletins/edit/<?php echo $bul['id']; ?>">
+        <a class='btn waves-effect waves-light btn blue-grey' href="<?php echo site_url(); ?>private/bulletins/edit/<?php echo $bul['id']; ?>">
           <i class="material-icons left">edit</i>
           Editar
         </a>
-        <a class='btn green' <?php if(!$bul['published']) { echo 'disabled'; } ?> href="<?php echo site_url(); ?>bulletins/notify_users/<?php echo $bul['id']; ?>">
+        <a class='btn green' <?php if(!$bul['published']) { echo 'disabled'; } ?> href="<?php echo site_url(); ?>private/bulletins/notify_users/<?php echo $bul['id']; ?>">
           <i class="material-icons left">notifications</i>
           Notificar usuários
         </a>

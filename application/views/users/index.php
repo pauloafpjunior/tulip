@@ -2,7 +2,7 @@
       <h4><?=$title?></h4>
       <br>
       <a class="btn-floating btn-large halfway-fab waves-effect waves-light blue" 
-        href="<?php echo site_url(); ?>users/create">
+        href="#">
         <i class="material-icons">add</i>
       </a>      
     </div>
@@ -28,6 +28,6 @@
           Entrar
           <i class="material-icons right">send</i>          
         </button>
-    </div>
+    </div>  
   </form>
 </div>

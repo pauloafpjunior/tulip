@@ -73,6 +73,7 @@ class Sections extends CI_Controller {
 			$config['upload_path'] = './' . $this->BASE_PATH_IMAGES;
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size'] = '1024';
+			$config['file_name'] = 'SEC_BUL_'.$this->session->userdata('bul_id').'_'.(new DateTime)->format('YmdHis');
 			$config['max_width'] = '2000';
 			$config['max_height'] = '2000';
 			$this->load->library('upload', $config);

@@ -2,7 +2,7 @@
       <h4><?=$title?></h4>
       <br>
       <a class="btn-floating btn-large halfway-fab waves-effect waves-light blue" 
-        href="<?php echo site_url(); ?>organizations/create">
+        href="<?php echo site_url(); ?>private/organizations/create">
         <i class="material-icons">add</i>
       </a>      
     </div>
@@ -19,11 +19,11 @@
         <?php echo word_limiter($org['description'], 45).'...'; ?>
         <a class="modal-trigger" href="#modalReadmore<?php echo $org['id'];?>">Leia mais</a>
         <br/><br/>
-        <a class="btn waves-effect waves-light teal" href="<?php echo site_url(); ?>organizations/entry/<?php echo $org['id']; ?>">
+        <a class="btn waves-effect waves-light teal" href="<?php echo site_url(); ?>private/organizations/entry/<?php echo $org['id']; ?>">
           <i class="material-icons right">send</i>          
           Entrar
         </a>
-        <a class='btn waves-effect waves-light blue-grey' href="<?php echo site_url(); ?>organizations/edit/<?php echo $org['id']; ?>">
+        <a class='btn waves-effect waves-light blue-grey' href="<?php echo site_url(); ?>private/organizations/edit/<?php echo $org['id']; ?>">
           <i class="material-icons left">edit</i>
           Editar
         </a>

@@ -4,7 +4,7 @@
     </div>
   </nav>
 <div class="container section">
-<?php echo form_open_multipart('bulletins/save'); ?>
+<?php echo form_open_multipart('private/bulletins/save'); ?>
   <input type="hidden" name="id" value="<?php echo $bul->id; ?>">
   <input type="hidden" name="image_path" value="<?php echo $bul->image; ?>">
   <div class="row">
@@ -43,7 +43,7 @@
         Salvar
         <i class="material-icons left">save</i>          
       </button>
-      <a href="<?php echo base_url(); ?>bulletins/index" class="waves-effect waves-light btn grey">
+      <a href="<?php echo base_url(); ?>private/bulletins/index" class="waves-effect waves-light btn grey">
         Cancelar
         <i class="material-icons left">close</i>          
       </a>

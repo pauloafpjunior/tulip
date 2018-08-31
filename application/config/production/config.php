@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://projetompw.dcc.ufla.br/tulipweb/';
+$config['base_url'] = 'https://ec2-18-222-213-66.us-east-2.compute.amazonaws.com';
 
 /*
 |--------------------------------------------------------------------------

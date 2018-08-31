@@ -15,7 +15,7 @@ class Organizations extends CI_Controller {
 		$data['title'] = 'Minhas organizações';
 		$data['organizations'] = $this->organizations_model->getByUser($this->session->userdata('user_id'));
 		$this->load->view('templates/header');
-		$this->load->view('organizations/index', $data);
+		$this->load->view('private/organizations/index', $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -41,7 +41,7 @@ class Organizations extends CI_Controller {
 	{
 		$data['title'] = 'Nova organização';
 		$this->load->view('templates/header');
-		$this->load->view('organizations/create', $data);
+		$this->load->view('private/organizations/create', $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -75,7 +75,7 @@ class Organizations extends CI_Controller {
 
 		$data['title'] = 'Editar organização';
 		$this->load->view('templates/header');
-		$this->load->view('organizations/edit', $data);
+		$this->load->view('private/organizations/edit', $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -106,6 +106,7 @@ class Organizations extends CI_Controller {
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size'] = '1024';
 			$config['max_width'] = '2000';
+			$config['file_name'] = 'ORG_USER_'.$this->session->userdata('user_id').'_'.(new DateTime)->format('YmdHis');
 			$config['max_height'] = '2000';
 			$this->load->library('upload', $config);
 			if($this->upload->do_upload('image')){				
@@ -120,7 +121,7 @@ class Organizations extends CI_Controller {
 					$this->organizations_model->save($this->getOrganizationFromInput($image_path));				
 				}				
 			}
-			redirect('organizations/index');
+			redirect('private/organizations/index');
 		}
 	}
 
@@ -135,6 +136,7 @@ class Organizations extends CI_Controller {
 		$organization->description = $this->input->post('description');
 		$organization->last_updated = (new DateTime)->format('Y-m-d H:i:s');
 		$organization->image = $image_path;
+		$organization->user_id = $this->session->userdata('user_id');
 		return $organization;
 	}
 

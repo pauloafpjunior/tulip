@@ -38,8 +38,15 @@ class Users extends CI_Controller {
 				$this->session->set_userdata('user_id', $data['user']->id);
 				$this->session->set_userdata('user_name', $data['user']->name);
 		
-				redirect('organizations/index');
+				redirect('private/organizations/index');
 			}
 		}
+	}
+
+	public function logout()
+	{
+		$this->session->unset_userdata('user_id');
+		$this->session->unset_userdata('user_name');
+		$this->index();
 	}
 }

@@ -4,7 +4,7 @@
     </div>
   </nav>
 <div class="container section">
-<?php echo form_open_multipart('sections/save'); ?>
+<?php echo form_open_multipart('private/sections/save'); ?>
   <div class="row">
     <div class="input-field col s12">
       <input id="title" name="title" type="text" class="validate <?php if (form_error('title')) {echo 'invalid';}?>">
@@ -38,7 +38,7 @@
           Salvar
           <i class="material-icons left">save</i>          
         </button>
-        <a href="<?php echo site_url(); ?>sections/index" class="waves-effect waves-light btn grey">
+        <a href="<?php echo site_url(); ?>private/sections/index" class="waves-effect waves-light btn grey">
           Cancelar
           <i class="material-icons left">close</i>          
         </a>
