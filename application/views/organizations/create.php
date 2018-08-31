@@ -8,38 +8,38 @@
     <div class="row">
       <div class="input-field col s12">
         <input id="name" name="name" type="text" class="validate <?php if (form_error('name')) {echo 'invalid';}?>">
-        <label for="name">Name *</label>        
-        <span class="helper-text" data-error="<?php echo form_error('name', ' ', ' '); ?>">Inform the organization name</span>        
+        <label for="name">Nome *</label>        
+        <span class="helper-text" data-error="<?php echo form_error('name', ' ', ' '); ?>">Informe o nome da organização</span>        
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
         <textarea id="description" name="description" class="materialize-textarea"></textarea>
-        <label for="name">Description</label>
-        <span class="helper-text">Provide a description for your organization...</span>        
+        <label for="name">Descrição</label>
+        <span class="helper-text">Descreva sua organização aqui...</span>        
       </div>    
     </div>
     <div class="row">
       <div class="file-field input-field">
         <div class="btn">
-          <span>Open</span>
+          <span>Procurar</span>
           <input type="file" id="image" name="image">
         </div>
         <div class="file-path-wrapper">
-          <input class="file-path validate" type="text" placeholder="Choose a logo image">
+          <input class="file-path validate" type="text" placeholder="Escolha uma imagem">
         </div>
       </div>
     </div>
     <div class="row">
-      <small>* Required fields</small>
+      <small>* Campos obrigatórios</small>
     </div>      
     <div class="row">
         <button class="btn waves-effect waves-light blue" type="submit">
-          Save
+          Salvar
           <i class="material-icons left">save</i>          
         </button>
         <a href="<?php echo base_url(); ?>organizations/index" class="waves-effect waves-light btn grey">
-          Cancel
+          Cancelar
           <i class="material-icons left">close</i>          
         </a>
     </div>

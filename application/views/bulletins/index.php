@@ -1,7 +1,7 @@
   <div class="nav-content container">
       <h4><?=$title?></h4>
       <div>
-        <a href="<?php echo site_url(); ?>organizations/exit_org" class="waves-effect waves-light btn-small grey">Exit</a>
+        <a href="<?php echo site_url(); ?>organizations/exit_org" class="waves-effect waves-light btn-small grey">Voltar</a>
         <strong>&nbsp;&nbsp;<?= $_SESSION['org_name']; ?></strong>
       </div>      
       <br>
@@ -24,26 +24,26 @@
         <p><i><?php echo $bul['subtitle']; ?></i></p>
         <div class="switch">
             <label class="tooltipped" data-position="right" data-tooltip="The bulletin must be pusblished before notifying the users.">
-              Unpublished
+              Não publicado
               <input onchange="window.location.href='<?php echo site_url(); ?>bulletins/publish/<?php echo $bul['id'] ?>'"  
                 type="checkbox" <?php if($bul['published']) { echo 'checked'; } ?> id="published" 
                 name="published">
               <span class="lever"></span>
-              Published
+              Publicado
             </label>
         </div>
-        <p class="grey lighten-2">Created at: <?php echo time_elapsed_string($bul['created_at']) ?></p>      
-        <a class="waves-effect waves-light btn teal" href="<?php echo site_url(); ?>bulletins/entry/<?php echo $bul['id']; ?>">
+        <p class="grey lighten-2">Última atualização: <?php echo time_elapsed_string($bul['created_at']) ?></p>      
+        <a class="btn waves-effect waves-light btn teal" href="<?php echo site_url(); ?>bulletins/entry/<?php echo $bul['id']; ?>">
           <i class="material-icons right">send</i>
-          Entry
+          Entrar
         </a>
-        <a class='btn blue-grey' href='#'>
+        <a class='btn waves-effect waves-light btn blue-grey' href='#'>
           <i class="material-icons left">edit</i>
-          Edit
+          Editar
         </a>
         <a class='btn green' <?php if(!$bul['published']) { echo 'disabled'; } ?> href="<?php echo site_url(); ?>bulletins/notify_users/<?php echo $bul['id']; ?>">
           <i class="material-icons left">notifications</i>
-          Notify users
+          Notificar usuários
         </a>
         
         

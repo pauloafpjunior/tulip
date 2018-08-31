@@ -1,7 +1,7 @@
 <div class="nav-content container">
       <h4><?=$title?></h4>
       <div>
-        <a href="<?php echo site_url(); ?>bulletins/exit_bul" class="waves-effect waves-light btn-small grey">Exit</a>
+        <a href="<?php echo site_url(); ?>bulletins/exit_bul" class="waves-effect waves-light btn-small grey">Voltar</a>
         <strong>&nbsp;&nbsp;<?= $_SESSION['bul_title']; ?></strong>
       </div>      
       <br>

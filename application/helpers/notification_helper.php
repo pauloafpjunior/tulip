@@ -1,10 +1,10 @@
 <?php
-function users_notification($org_name, $bul_id)
+function users_notification($org_name, $org_id, $bul_id)
 {
     $API_ACCESS_KEY = getenv('FCM_API_KEY');
 
     if ($API_ACCESS_KEY) {
-        $topic = '/topics/TULIPBETEL';
+        $topic = '/topics/tulip_org_'.$org_id;
 
         #prep the bundle
         $msg = array(

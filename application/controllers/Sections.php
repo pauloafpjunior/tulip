@@ -12,7 +12,7 @@ class Sections extends CI_Controller {
 			redirect('bulletins/index');
 		}
 
-		$data['title'] = 'Sections';
+		$data['title'] = 'Seções do boletim';
 		$data['sections'] = $this->sections_model->getAll($this->session->userdata('bul_id'));
 		$this->load->view('templates/header');
 		$this->load->view('sections/index', $data);
@@ -22,7 +22,7 @@ class Sections extends CI_Controller {
 	
 	public function create() 
 	{
-		$data['title'] = 'New section';
+		$data['title'] = 'Nova seção';
 		
 		$this->load->view('templates/header');
 		$this->load->view('sections/create', $data);
@@ -31,7 +31,10 @@ class Sections extends CI_Controller {
 
 	public function save() 
 	{
-		$this->form_validation->set_rules('title', 'Section title', 'required|min_length[3]');
+		$this->form_validation->set_rules('title', 'Título da Seção', 'required|min_length[3]', array(
+			'required' => 'Você deve informar o %s.',
+			'min_length' => 'O %s deve conter pelo menos %d caracteres.',
+		));
 		if ($this->form_validation->run() === FALSE) {
 			$this->create();
 		} else {

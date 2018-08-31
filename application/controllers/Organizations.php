@@ -7,16 +7,34 @@ class Organizations extends CI_Controller {
 	
 	public function index() 
 	{
-		$data['title'] = 'My organizations';
+		$data['title'] = 'Minhas organizações';
 		$data['organizations'] = $this->organizations_model->getAll();
 		$this->load->view('templates/header');
 		$this->load->view('organizations/index', $data);
 		$this->load->view('templates/footer');
 	}
 
+	public function view($org_id = null) 
+	{
+		if (!$org_id || !is_numeric($org_id)) {
+			show_404();
+		}
+		
+		$data['title'] = 'Organização';
+		$data['org'] = $this->organizations_model->getOrganization($org_id);
+		
+		if (!$data['org']) {
+            show_404();
+        }
+
+		$this->load->view('templates/header');
+		$this->load->view('organizations/view', $data);
+		$this->load->view('templates/footer');
+	}
+
 	public function create() 
 	{
-		$data['title'] = 'New organization';
+		$data['title'] = 'Nova organização';
 		$this->load->view('templates/header');
 		$this->load->view('organizations/create', $data);
 		$this->load->view('templates/footer');
@@ -48,7 +66,11 @@ class Organizations extends CI_Controller {
 
 	public function save() 
 	{
-		$this->form_validation->set_rules('name', 'Organization name', 'required|min_length[3]');
+		$this->form_validation->set_rules('name', 'Nome da Organização', 'required|min_length[3]',
+			array(
+				'required' => 'Você deve informar o %s.',
+				'min_length' => 'O %s deve conter pelo menos %d caracteres.',
+			));
 		if ($this->form_validation->run() === FALSE) {
 			$this->create();
 		} else {

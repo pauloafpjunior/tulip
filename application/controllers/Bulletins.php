@@ -13,16 +13,36 @@ class Bulletins extends CI_Controller
             redirect('organizations/index');
         }
 
-        $data['title'] = 'Bulletins';
+        $data['title'] = 'Boletins';
         $data['bulletins'] = $this->bulletins_model->getAll($this->session->userdata('org_id'));
         $this->load->view('templates/header');
         $this->load->view('bulletins/index', $data);
         $this->load->view('templates/footer');
     }
 
+    public function view($bul_id = null) 
+	{
+		if (!$bul_id || !is_numeric($bul_id)) {
+			show_404();
+		}
+		
+		$data['title'] = 'Boletim';
+		$data['bul'] = $this->bulletins_model->getBulletin($bul_id, true);
+		
+		if (!$data['bul']) {
+            show_404();
+        }
+
+        $data['sections'] = $this->sections_model->getAll($bul_id);		
+
+		$this->load->view('templates/header');
+		$this->load->view('bulletins/view', $data);
+		$this->load->view('templates/footer');
+	}
+
     public function create()
     {
-        $data['title'] = 'New bulletin';
+        $data['title'] = 'Novo boletim';
 
         $this->load->view('templates/header');
         $this->load->view('bulletins/create', $data);
@@ -62,7 +82,7 @@ class Bulletins extends CI_Controller
             redirect('organizations/index');
         }
 
-        users_notification($this->session->userdata('org_name'), $bul_id);
+        users_notification($this->session->userdata('org_name'), $this->session->userdata('org_id'), $bul_id);
 
         redirect('sections/index');
     }
@@ -93,7 +113,10 @@ class Bulletins extends CI_Controller
 
     public function save()
     {
-        $this->form_validation->set_rules('title', 'Bulletin title', 'required|min_length[3]');
+        $this->form_validation->set_rules('title', 'Título do Boletim', 'required|min_length[3]', array(
+            'required' => 'Você deve informar o %s.',
+            'min_length' => 'O %s deve conter pelo menos %d caracteres.',
+        ));
         if ($this->form_validation->run() === false) {
             $this->create();
         } else {
