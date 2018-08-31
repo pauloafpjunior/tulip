@@ -29,6 +29,33 @@ class Sections extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
+	public function edit($sec_id = NULL) 
+	{
+		if (!$sec_id || !is_numeric($sec_id)) {
+			show_404();
+		}
+		
+		$data['sec'] = $this->sections_model->getSection($sec_id);
+		if (!$data['sec']) {
+			show_404();
+		}
+
+		$data['title'] = 'Editar seção';
+		$this->load->view('templates/header');
+		$this->load->view('sections/edit', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function remove($sec_id = NULL) 
+	{
+		if (!$sec_id || !is_numeric($sec_id)) {
+			show_404();
+		}
+		
+		$this->sections_model->remove($sec_id);
+		$this->index();
+	}
+
 	public function save() 
 	{
 		$this->form_validation->set_rules('title', 'Título da Seção', 'required|min_length[3]', array(
@@ -36,7 +63,11 @@ class Sections extends CI_Controller {
 			'min_length' => 'O %s deve conter pelo menos %d caracteres.',
 		));
 		if ($this->form_validation->run() === FALSE) {
-			$this->create();
+			if ($this->input->post('id')) {
+				$this->edit($this->input->post('id'));
+			} else {
+				$this->create();
+			}
 		} else {
 			// Upload Image
 			$config['upload_path'] = './' . $this->BASE_PATH_IMAGES;
@@ -50,8 +81,12 @@ class Sections extends CI_Controller {
 				$image_path = base_url() . $this->BASE_PATH_IMAGES . $data['upload_data']['file_name'];
 				$this->sections_model->save($this->getSectionFromInput($image_path));				
 			} else {
-				$image_path = base_url() . $this->BASE_PATH_IMAGES . 'noimage.png';
-				$this->sections_model->save($this->getSectionFromInput($image_path));				
+				if ($this->input->post('image_path')) {
+                    $this->sections_model->save($this->getSectionFromInput($this->input->post('image_path')));				
+				} else {
+					$image_path = base_url() . $this->BASE_PATH_IMAGES . 'noimage.png';
+					$this->sections_model->save($this->getSectionFromInput($image_path));				
+				}
 			}
 			redirect('sections/index');			
 		}
@@ -59,7 +94,11 @@ class Sections extends CI_Controller {
 
 	private function getSectionFromInput($image_path) {
 		$section = new stdClass();
-		$section->id = null;
+		if ($this->input->post('id')) {
+			$section->id = $this->input->post('id');
+		} else {
+			$section->id = null;
+		}
 		$section->title = $this->input->post('title');
 		$section->content = $this->input->post('content');
 		$section->bulletin_id = $this->session->userdata('bul_id');

@@ -18,4 +18,14 @@
 				'bulletin_id' => $bul_id
 			))->result_array();
 		}
+
+		public function getSection($id){
+			$query = $this->db->get_where('sections', array('id' => $id));
+			return $query->row();
+		}
+
+		public function remove($id){
+			$this->db->where('id', $id);
+			return $this->db->delete('sections');
+		}
 	}
