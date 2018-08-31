@@ -7,6 +7,11 @@ class Users extends CI_Controller {
 	
 	public function index() 
 	{ 
+		// Check organization login
+		if ($this->session->userdata('user_id')) {
+			redirect('private/organizations/index');
+		}
+
 		$data['title'] = 'Login';
 		$this->load->view('templates/header');
 		$this->load->view('users/index', $data);

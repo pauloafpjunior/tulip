@@ -7,11 +7,6 @@ class Organizations extends CI_Controller {
 	
 	public function index() 
 	{
-		// Check organization login
-		if (!$this->session->userdata('user_id') || !$this->session->userdata('user_name')) {
-			redirect('users/index');
-		}
-
 		$data['title'] = 'Minhas organizações';
 		$data['organizations'] = $this->organizations_model->getByUser($this->session->userdata('user_id'));
 		$this->load->view('templates/header');
