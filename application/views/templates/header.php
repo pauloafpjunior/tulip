@@ -14,21 +14,21 @@
   <body>
   <nav class="nav-extended black">
     <div class="nav-wrapper container">
-      <a class="brand-logo" href="<?php echo site_url(); ?>organizations/index">
+      <a class="brand-logo" href="<?php echo site_url(); ?>private/organizations/index">
         <img src="<?php echo base_url(); ?>assets/images/other/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         TulipWeb
       </a>
 
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="<?php echo site_url(); ?>organizations/index">Início</a></li>
+        <li><a href="<?php echo site_url(); ?>private/organizations/index">Início</a></li>
         <li><a class="modal-trigger" href="#modalAbout">Sobre</a></li>
         <?php if (isset($_SESSION['user_id'])): ?>
           <li><a class="waves-effect waves-light btn-small grey" href="<?php echo site_url(); ?>users/logout">Sair</a></li>
         <?php endif; ?>
       </ul>
       <ul class="sidenav" id="mobile-demo">
-        <li><a href="<?php echo site_url(); ?>organizations/index">Início</a></li>
+        <li><a href="<?php echo site_url(); ?>private/organizations/index">Início</a></li>
         <li><a class="modal-trigger" href="#modalAbout">Sobre</a></li>
         <?php if (isset($_SESSION['user_id'])): ?>
           <li><a class="waves-effect waves-light btn-small grey" href="<?php echo site_url(); ?>users/logout">Sair</a></li>
