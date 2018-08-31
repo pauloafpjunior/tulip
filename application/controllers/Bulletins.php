@@ -111,6 +111,23 @@ class Bulletins extends CI_Controller
         redirect('bulletins/index');
     }
 
+    public function edit($bul_id = NULL) 
+	{
+		if (!$bul_id || !is_numeric($bul_id)) {
+			show_404();
+		}
+		
+		$data['bul'] = $this->bulletins_model->getBulletin($bul_id);
+		if (!$data['bul']) {
+			show_404();
+		}
+
+		$data['title'] = 'Editar boletim';
+		$this->load->view('templates/header');
+		$this->load->view('bulletins/edit', $data);
+		$this->load->view('templates/footer');
+	}
+
     public function save()
     {
         $this->form_validation->set_rules('title', 'Título do Boletim', 'required|min_length[3]', array(
@@ -118,7 +135,11 @@ class Bulletins extends CI_Controller
             'min_length' => 'O %s deve conter pelo menos %d caracteres.',
         ));
         if ($this->form_validation->run() === false) {
-            $this->create();
+            if ($this->input->post('id')) {
+				$this->edit($this->input->post('id'));
+			} else {
+				$this->create();
+			}
         } else {
             // Upload Image
             $config['upload_path'] = './' . $this->BASE_PATH_IMAGES;
@@ -132,8 +153,12 @@ class Bulletins extends CI_Controller
                 $image_path = base_url() . $this->BASE_PATH_IMAGES . $data['upload_data']['file_name'];
                 $this->bulletins_model->save($this->getBulletinFromInput($image_path));
             } else {
-                $image_path = base_url() . $this->BASE_PATH_IMAGES . 'noimage.png';
-                $this->bulletins_model->save($this->getBulletinFromInput($image_path));
+                if ($this->input->post('image_path')) {
+                    $this->bulletins_model->save($this->getBulletinFromInput($this->input->post('image_path')));
+				} else {
+					$image_path = base_url() . $this->BASE_PATH_IMAGES . 'noimage.png';
+                    $this->bulletins_model->save($this->getBulletinFromInput($image_path));
+				}	                             
             }
 
             // Update last_update field of organization
@@ -152,7 +177,11 @@ class Bulletins extends CI_Controller
     private function getBulletinFromInput($image_path)
     {
         $bulletin = new stdClass();
-        $bulletin->id = null;
+        if ($this->input->post('id')) {
+			$bulletin->id = $this->input->post('id');
+		} else {
+			$bulletin->id = null;
+		}
         $bulletin->title = $this->input->post('title');
         $bulletin->subtitle = $this->input->post('subtitle');
         $bulletin->created_at = (new DateTime)->format('Y-m-d H:i:s');

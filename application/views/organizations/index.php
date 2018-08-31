@@ -23,7 +23,7 @@
           <i class="material-icons right">send</i>          
           Entrar
         </a>
-        <a class='btn waves-effect waves-light blue-grey' href='#'>
+        <a class='btn waves-effect waves-light blue-grey' href="<?php echo site_url(); ?>organizations/edit/<?php echo $org['id']; ?>">
           <i class="material-icons left">edit</i>
           Editar
         </a>

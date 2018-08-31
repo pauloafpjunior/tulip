@@ -57,6 +57,23 @@ class Organizations extends CI_Controller {
 		redirect('bulletins/index');
 	}
 
+	public function edit($org_id = NULL) 
+	{
+		if (!$org_id || !is_numeric($org_id)) {
+			show_404();
+		}
+		
+		$data['org'] = $this->organizations_model->getOrganization($org_id);
+		if (!$data['org']) {
+			show_404();
+		}
+
+		$data['title'] = 'Editar organização';
+		$this->load->view('templates/header');
+		$this->load->view('organizations/edit', $data);
+		$this->load->view('templates/footer');
+	}
+
 	public function exit_org()
 	{
 		$this->session->unset_userdata('org_id');
@@ -72,8 +89,13 @@ class Organizations extends CI_Controller {
 				'min_length' => 'O %s deve conter pelo menos %d caracteres.',
 			));
 		if ($this->form_validation->run() === FALSE) {
-			$this->create();
-		} else {
+			if ($this->input->post('id')) {
+				$this->edit($this->input->post('id'));
+			} else {
+				$this->create();
+			}
+		} else {			
+
 			// Upload Image
 			$config['upload_path'] = './' . $this->BASE_PATH_IMAGES;
 			$config['allowed_types'] = 'gif|jpg|png';
@@ -86,8 +108,12 @@ class Organizations extends CI_Controller {
 				$image_path = base_url() . $this->BASE_PATH_IMAGES . $data['upload_data']['file_name'];
 				$this->organizations_model->save($this->getOrganizationFromInput($image_path));
 			} else {
-				$image_path = base_url() . $this->BASE_PATH_IMAGES . 'noimage.png';
-				$this->organizations_model->save($this->getOrganizationFromInput($image_path));				
+				if ($this->input->post('image_path')) {
+					$this->organizations_model->save($this->getOrganizationFromInput($this->input->post('image_path')));				
+				} else {
+					$image_path = base_url() . $this->BASE_PATH_IMAGES . 'noimage.png';
+					$this->organizations_model->save($this->getOrganizationFromInput($image_path));				
+				}				
 			}
 			redirect('organizations/index');
 		}
@@ -95,7 +121,11 @@ class Organizations extends CI_Controller {
 
 	private function getOrganizationFromInput($image_path) {
 		$organization = new stdClass();
-		$organization->id = null;
+		if ($this->input->post('id')) {
+			$organization->id = $this->input->post('id');
+		} else {
+			$organization->id = null;
+		}
 		$organization->name = $this->input->post('name');
 		$organization->description = $this->input->post('description');
 		$organization->last_updated = (new DateTime)->format('Y-m-d H:i:s');

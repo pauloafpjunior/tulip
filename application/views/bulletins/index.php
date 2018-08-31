@@ -37,7 +37,7 @@
           <i class="material-icons right">send</i>
           Entrar
         </a>
-        <a class='btn waves-effect waves-light btn blue-grey' href='#'>
+        <a class='btn waves-effect waves-light btn blue-grey' href="<?php echo site_url(); ?>bulletins/edit/<?php echo $bul['id']; ?>">
           <i class="material-icons left">edit</i>
           Editar
         </a>
