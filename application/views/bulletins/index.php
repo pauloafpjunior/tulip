@@ -23,12 +23,14 @@
         </h5>
         <p><i><?php echo $bul['subtitle']; ?></i></p>
         <div class="switch">
-          <label>
-            Unpublished
-            <input onchange="window.location.href='<?php echo site_url(); ?>bulletins/publish/<?php echo $bul['id'] ?>'"  type="checkbox" <?php if($bul['published']) { echo 'checked'; } ?> id="published" name="published">
-            <span class="lever"></span>
-            Published
-          </label>
+            <label class="tooltipped" data-position="right" data-tooltip="The bulletin must be pusblished before notifying the users.">
+              Unpublished
+              <input onchange="window.location.href='<?php echo site_url(); ?>bulletins/publish/<?php echo $bul['id'] ?>'"  
+                type="checkbox" <?php if($bul['published']) { echo 'checked'; } ?> id="published" 
+                name="published">
+              <span class="lever"></span>
+              Published
+            </label>
         </div>
         <p class="grey lighten-2">Created at: <?php echo time_elapsed_string($bul['created_at']) ?></p>      
         <a class="waves-effect waves-light btn teal" href="<?php echo site_url(); ?>bulletins/entry/<?php echo $bul['id']; ?>">
@@ -38,6 +40,10 @@
         <a class='btn blue-grey' href='#'>
           <i class="material-icons left">edit</i>
           Edit
+        </a>
+        <a class='btn green' <?php if(!$bul['published']) { echo 'disabled'; } ?> href="<?php echo site_url(); ?>bulletins/notify_users/<?php echo $bul['id']; ?>">
+          <i class="material-icons left">notifications</i>
+          Notify users
         </a>
         
         
