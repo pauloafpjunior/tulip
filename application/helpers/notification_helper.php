@@ -3,27 +3,39 @@ function users_notification($org_name, $org_id, $bul_id)
 {
     $API_ACCESS_KEY = getenv('FCM_API_KEY');
 
+    
     if ($API_ACCESS_KEY) {
         $topic = '/topics/tulip_org_'.$org_id;
+
+        $userdata = array(
+            'org_id' => $org_id,
+            'bul_id' => $bul_id            
+        );
+
+        $data = array(
+            "content-available" => "1",
+            "no-cache" => "1",
+            'forceShow' => 'true'          
+        );
+
 
         #prep the bundle
         $msg = array(
             'body' => 'Há um novo boletim para você!',
             'title' => $org_name,
             'icon' => 'fcm_push_icon', /*Default Icon*/
-            'sound' => 'default', /*Default sound*/
-        );
-
-        $data = array(
+            "tag" => $org_id,
+            'sound' => 'default',
             'org_id' => $org_id,
-            'bul_id' => $bul_id
+            'bul_id' => $bul_id  
         );
 
-        $fields = array
-            (
+        
+
+        $fields = array(
             'to' => $topic,
-            'notification' => $msg,
-            'data' => $data,
+            'data' => $msg,     
+            'additionalData' => $data,
         );
 
         $headers = array
