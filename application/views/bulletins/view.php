@@ -14,7 +14,7 @@
         </h5>
         <p><i><?php echo $bul->subtitle; ?></i></p>
         <p class="grey lighten-2">Última atualização: <?php echo time_elapsed_string($bul->created_at) ?></p>      
-        <a class="btn waves-effect waves-light teal" href="#">
+        <a class="btn waves-effect waves-light teal" target="_blank" href="https://play.google.com/store/apps/details?id=com.aws.tulipapp">
           <i class="material-icons left">android</i>          
           Baixar App
         </a>
