@@ -11,11 +11,12 @@ file available at the root of this project.
 3. **Setup** the following environment variables in your web server (to do this in Apache Webserver, please update the `envvars` file, available at `/etc/apache2` folder).
 
 ~~~~~~~~
-MYSQL_DATABASE="tulipdb"
-MYSQL_HOSTNAME="your-domain"
-MYSQL_USERNAME="your-username"
-MYSQL_PASSWORD="your-password"
-FCM_API_KEY="your-fcm-api-key"
+export HOSTNAME='your-hostname'
+export MYSQL_DATABASE='database-name'
+export MYSQL_HOSTNAME='your-database-hostname'
+export MYSQL_USERNAME='your-database-username'
+export MYSQL_PASSWORD='your-database-password'
+export FCM_API_KEY='your-fcm-api-key'
 ~~~~~~~~
 
 # License
