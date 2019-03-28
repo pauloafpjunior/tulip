@@ -22,9 +22,14 @@ class Rest extends REST_Controller {
     }
 
     public function bulletins_get() {
+        $query = $this->input->get('q');
         $org_id = $this->input->get('org_id');
         if ($org_id && is_numeric($org_id)) {
-            $this->response($this->bulletins_model->getAll($org_id, true), 200);
+            if (!$query) {                
+                $this->response($this->bulletins_model->getAll($org_id, true), 200);
+            } else {
+                $this->response($this->bulletins_model->search($org_id, $query), 200);
+            }
         } else {
             $this->response([], 404);
         }
@@ -39,4 +44,5 @@ class Rest extends REST_Controller {
         }
     }
 
+    
 }

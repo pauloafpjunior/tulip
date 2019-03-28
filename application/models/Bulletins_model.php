@@ -19,6 +19,13 @@
 			return $query->result_array();
 		}
 
+		public function search($org_id, $q){
+			$this->db->order_by('created_at', 'DESC');
+			$sql = "SELECT bulletins.id, bulletins.title, bulletins.subtitle, bulletins.image FROM bulletins JOIN sections ON bulletins.organization_id = ? AND bulletins.id = sections.bulletin_id  AND sections.content LIKE '%".   $this->db->escape_like_str($q)."%' ESCAPE '!' GROUP BY bulletins.id";
+			$query = $this->db->query($sql, array($org_id));
+			return $query->result();
+		}
+
 		public function save($bulletin){
 			if ($bulletin->id) {
 				$this->db->where('id', $bulletin->id);
