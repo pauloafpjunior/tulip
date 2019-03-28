@@ -5,7 +5,7 @@
 		}
 
 		public function save($sec){
-			if ($sec->id) {
+			if ($sec->id and $sec->id != null) {
 				$this->db->where('id', $sec->id);
 				return $this->db->update('sections', $sec);
 			} else {

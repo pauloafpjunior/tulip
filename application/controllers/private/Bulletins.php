@@ -87,6 +87,35 @@ class Bulletins extends CI_Controller
         redirect('private/sections/index');
     }
 
+    public function duplicate($bul_id = null)
+    {
+        if (!$bul_id || !is_numeric($bul_id)) {
+            show_404();
+        }
+
+        $data['bulletin'] = $this->bulletins_model->getBulletin($bul_id);
+        if (!$data['bulletin']) {
+            show_404();
+        }
+
+        $data['bulletin']->id = null;
+        $data['bulletin']->created_at = (new DateTime)->format('Y-m-d H:i:s');
+        $data['bulletin']->published = false;
+        $this->bulletins_model->save($data['bulletin']);
+
+        $new_bulletin_id = $this->db->insert_id();
+
+        $sections = $this->sections_model->getAll($bul_id);
+        foreach($sections as $sec) {
+            $sec_obj = (object) $sec;
+            $sec_obj->id = null;
+            $sec_obj->bulletin_id = $new_bulletin_id;
+            $this->sections_model->save($sec_obj);
+        }
+
+        redirect('private/bulletins/index');
+    }
+
     public function exit_bul()
     {
         $this->session->unset_userdata('bul_id');

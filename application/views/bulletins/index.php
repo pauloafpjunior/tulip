@@ -41,7 +41,11 @@
           <i class="material-icons left">edit</i>
           Editar
         </a>
-        <a class='btn green' <?php if(!$bul['published']) { echo 'disabled'; } ?> href="<?php echo site_url(); ?>private/bulletins/notify_users/<?php echo $bul['id']; ?>">
+        <a class='btn waves-effect waves-light btn blue-grey' href="<?php echo site_url(); ?>private/bulletins/duplicate/<?php echo $bul['id']; ?>">
+          <i class="material-icons left">content_copy</i>
+          Clonar
+        </a>
+          <a class='btn green' <?php if(!$bul['published']) { echo 'disabled'; } ?> href="<?php echo site_url(); ?>private/bulletins/notify_users/<?php echo $bul['id']; ?>">
           <i class="material-icons left">notifications</i>
           Notificar usuários
         </a>

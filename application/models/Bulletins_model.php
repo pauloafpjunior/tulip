@@ -9,9 +9,9 @@
 			$QTD_PAGE = 5;
 
 			$this->db->order_by('created_at', 'DESC');
-			$offset = $page * $QTD_PAGE; 
-			$this->db->limit($QTD_PAGE, $offset);
 			if ($just_published) {
+				$offset = $page * $QTD_PAGE; 
+				$this->db->limit($QTD_PAGE, $offset);
 				$query = $this->db->get_where('bulletins', array(
 					'organization_id' => $org_id,
 					'published' => '1'
