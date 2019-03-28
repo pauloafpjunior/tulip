@@ -1,11 +1,16 @@
 <?php
 	class Bulletins_model extends CI_Model{
+		
 		public function __construct(){
 			$this->load->database();			
 		}
 
-		public function getAll($org_id, $just_published = false){
+		public function getAll($org_id, $just_published = false, $page = 1){
+			$QTD_PAGE = 5;
+
 			$this->db->order_by('created_at', 'DESC');
+			$offset = $page * $QTD_PAGE; 
+			$this->db->limit($QTD_PAGE, $offset);
 			if ($just_published) {
 				$query = $this->db->get_where('bulletins', array(
 					'organization_id' => $org_id,
