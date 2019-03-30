@@ -22,9 +22,14 @@ class Rest extends REST_Controller {
     }
 
     public function bulletins_get() {
-        $query = $this->input->get('q');
-        $page = $this->input->get('p');
-        $org_id = $this->input->get('org_id');
+        $query = $this->get('q');
+        $page = $this->get('p');
+        $org_id = $this->get('org_id');
+        $bul_id = $this->get('bul_id');
+        if ($bul_id && is_numeric($bul_id)) {
+            return $this->response($this->bulletins_model->getBulletin($bul_id, true), 200);        
+        }
+
         if ($org_id && is_numeric($org_id)) {
             if (!$query) {
                 if (!$page) {
